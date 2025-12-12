@@ -16,7 +16,11 @@ app.get("/", (req, res) => {
 // routes
 app.use("/api/auth", authRoutes);
 
+const transportRoutes = require("./routes/transport");
+app.use("/api/transport", transportRoutes);
 
+const fertilizerRoutes = require("./routes/fertilizer");
+app.use("/api/fertilizer", fertilizerRoutes);
 // connect to mongodb
 mongoose
   .connect(process.env.MONGO_URI)
