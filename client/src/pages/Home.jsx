@@ -21,9 +21,9 @@ const Home = () => {
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-600">
               <a href="#" className="hover:text-emerald-600 transition-colors">Home</a>
-              <a href="#" className="hover:text-emerald-600 transition-colors">Transport Hub</a>
-              <a href="#" className="hover:text-emerald-600 transition-colors">Precision Plans</a>
-              <a href="#" className="hover:text-emerald-600 transition-colors">About Us</a>
+              <a href="/transport" className="hover:text-emerald-600 transition-colors">Transport Hub</a>
+              <a href="/fertilizer" className="hover:text-emerald-600 transition-colors">Precision Plans</a>
+              <a href="/about" className="hover:text-emerald-600 transition-colors">About Us</a>
             </div>
 
             {/* CTA Button */}
@@ -93,7 +93,7 @@ const Home = () => {
             <p className="text-gray-600 leading-relaxed mb-6">
               Don't pay for empty space. Connect with nearby farmers to pool your produce. Features include real-time GPS tracking and route optimization.
             </p>
-            <a href="#" className="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700">
+            <a href="/Transport" className="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700">
               Find Transport <ChevronRight className="w-4 h-4 ml-1" />
             </a>
           </div>
@@ -107,9 +107,9 @@ const Home = () => {
             <p className="text-gray-600 leading-relaxed mb-6">
               Maximize ROI with land-specific analysis. We calculate the exact fertilizer mix based on your soil health and crop requirements.
             </p>
-            <a href="#" className="inline-flex items-center text-emerald-600 font-semibold hover:text-emerald-700">
+            <Link  to="/fertilizer" className="inline-flex items-center text-emerald-600 font-semibold hover:text-emerald-700">
               Generate Plan <ChevronRight className="w-4 h-4 ml-1" />
-            </a>
+            </Link>
           </div>
 
         </div>
@@ -186,7 +186,7 @@ const Home = () => {
           <div className="flex gap-8 text-sm font-medium">
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-            <a href="#" className="hover:text-white transition-colors">Contact Support</a>
+            <a href="/contact" className="hover:text-white transition-colors">Contact Support</a>
           </div>
           <div className="text-sm opacity-60">
             © 2024 AgriPool Inc. All rights reserved.

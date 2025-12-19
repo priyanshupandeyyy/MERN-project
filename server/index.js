@@ -3,8 +3,10 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const authRoutes = require("./routes/auth");
-
+const contactRoutes = require('./routes/contact');
 const app = express();
+const transportRoutes = require('./routes/transport');
+
 app.use(cors());
 app.use(express.json());
 
@@ -15,13 +17,17 @@ app.get("/", (req, res) => {
 
 // routes
 app.use("/api/auth", authRoutes);
+app.use('/api/contact', contactRoutes);
 
-const transportRoutes = require("./routes/transport");
-app.use("/api/transport", transportRoutes);
+
+// Routes
+app.use('/api/transport', transportRoutes);
 
 const fertilizerRoutes = require("./routes/fertilizer");
 app.use("/api/fertilizer", fertilizerRoutes);
 // connect to mongodb
+
+
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB connected"))

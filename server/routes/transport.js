@@ -1,36 +1,34 @@
 const express = require("express");
-const Transport = require("../models/transport");
+const TransportRequest = require("../models/TransportRequest");
+
 const router = express.Router();
 
 // CREATE TRANSPORT REQUEST
-router.post("/create", async (req, res) => {
+router.post("/request", async (req, res) => {
   try {
-    const { userId, crop, quantity, pickup, destination } = req.body;
+    const { userId, cropName, quantity, pickupLocation, destination } = req.body;
 
-    const newRequest = new Transport({
+    if (!userId) {
+      return res.status(401).json({ error: "User not logged in" });
+    }
+
+    const newRequest = new TransportRequest({
       userId,
-      crop,
+      cropName,
       quantity,
-      pickup,
-      destination
+      pickupLocation,
+      destination,
     });
 
     await newRequest.save();
-    res.json({ message: "Transport request saved!" });
 
+    res.json({
+      message: "Transport request saved successfully",
+      request: newRequest,
+    });
   } catch (err) {
-    console.log(err);
-    res.json({ error: "Server error" });
-  }
-});
-
-// GET ALL TRANSPORT REQUESTS
-router.get("/all", async (req, res) => {
-  try {
-    const data = await Transport.find().populate("userId", "name phone");
-    res.json(data);
-  } catch (err) {
-    res.json({ error: "Server error" });
+    console.error(err);
+    res.status(500).json({ error: "Server error" });
   }
 });
 
