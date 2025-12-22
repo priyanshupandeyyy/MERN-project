@@ -1,17 +1,39 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Truck, Sprout, MapPin, TrendingUp, ChevronRight, CheckCircle2, Leaf } from 'lucide-react';
-
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Truck, Sprout, MapPin, TrendingUp, ChevronRight, CheckCircle2, Leaf, User, LogOut } from 'lucide-react';
 const Home = () => {
+
+  const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+
+  // Check if user is logged in on component mount
+  useEffect(() => {
+    const userId = localStorage.getItem("userId");
+    const token = localStorage.getItem("token");
+    // If you saved the name in localStorage during login, get it here
+    const userName = localStorage.getItem("userName") || "Farmer"; 
+
+    if (userId && token) {
+      setUser({ id: userId, name: userName });
+    }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.clear(); // Clear token, userId, etc.
+    setUser(null);
+    navigate("/login");
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 font-sans text-gray-800">
       
       {/* 1. NAVBAR - Fixed and Glassmorphism effect */}
+      {/* 1. NAVBAR */}
       <nav className="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="flex justify-between items-center h-20">
             {/* Logo */}
-            <div className="flex items-center gap-2 cursor-pointer">
+            <div className="flex items-center gap-2 cursor-pointer" onClick={() => navigate("/")}>
               <div className="bg-emerald-600 p-2 rounded-lg">
                 <Leaf className="text-white w-6 h-6" />
               </div>
@@ -20,17 +42,33 @@ const Home = () => {
 
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-600">
-              <a href="#" className="hover:text-emerald-600 transition-colors">Home</a>
-              <a href="/transport" className="hover:text-emerald-600 transition-colors">Transport Hub</a>
-              <a href="/fertilizer" className="hover:text-emerald-600 transition-colors">Precision Plans</a>
-              <a href="/about" className="hover:text-emerald-600 transition-colors">About Us</a>
+              <Link to="/" className="hover:text-emerald-600 transition-colors">Home</Link>
+              <Link to="/transport" className="hover:text-emerald-600 transition-colors">Transport Hub</Link>
+              <Link to="/planner" className="hover:text-emerald-600 transition-colors">Precision Plans</Link>
+              <Link to="/about" className="hover:text-emerald-600 transition-colors">About Us</Link>
             </div>
 
-            {/* CTA Button */}
-            <div className="hidden md:block">
-              <Link to="/login" className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2.5 rounded-full font-semibold transition-all shadow-lg shadow-orange-500/30 hover:shadow-orange-500/40">
-                Get Started
-              </Link>
+            {/* Auth Condition: Show User Name or Get Started */}
+            <div className="hidden md:flex items-center gap-4">
+              {user ? (
+                <div className="flex items-center gap-3 bg-emerald-50 px-4 py-2 rounded-full border border-emerald-100">
+                  <div className="bg-emerald-600 p-1.5 rounded-full">
+                    <User className="text-white w-4 h-4" />
+                  </div>
+                  <span className="font-bold text-emerald-900 text-sm">Hi, {user.name}</span>
+                  <button 
+                    onClick={handleLogout}
+                    className="ml-2 p-1 text-gray-400 hover:text-red-500 transition-colors"
+                    title="Logout"
+                  >
+                    <LogOut size={18} />
+                  </button>
+                </div>
+              ) : (
+                <Link to="/login" className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2.5 rounded-full font-semibold transition-all shadow-lg shadow-orange-500/30 hover:shadow-orange-500/40">
+                  Get Started
+                </Link>
+              )}
             </div>
           </div>
         </div>
