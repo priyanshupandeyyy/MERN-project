@@ -10,23 +10,14 @@ const transportRoutes = require('./routes/transport');
 app.use(cors());
 app.use(express.json());
 
-// test route
 app.get("/", (req, res) => {
   res.json({ message: "AgriPool backend is running..." });
 });
-
-// routes
 app.use("/api/auth", authRoutes);
 app.use('/api/contact', contactRoutes);
-
-
-// Routes
 app.use('/api/transport', transportRoutes);
-
 const fertilizerRoutes = require("./routes/fertilizer");
 app.use("/api/fertilizer", fertilizerRoutes);
-// connect to mongodb
-
 
 mongoose
   .connect(process.env.MONGO_URI)

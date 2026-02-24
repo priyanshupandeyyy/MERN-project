@@ -17,7 +17,7 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen bg-green-50">
-      {/* Header */}
+      
       <header className="bg-green-700 text-white py-4 px-6 flex justify-between items-center">
         <h1 className="text-2xl font-bold">AgriPool</h1>
         <button
@@ -28,9 +28,7 @@ export default function Dashboard() {
         </button>
       </header>
 
-      {/* Main Section */}
       <main className="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* Transport Card */}
         <div className="bg-white rounded-lg shadow-lg p-6 flex flex-col justify-between hover:scale-105 transform transition">
           <h2 className="text-xl font-bold mb-4 text-green-700">Transport Pooling</h2>
           <p className="text-gray-700 mb-4">
@@ -44,7 +42,6 @@ export default function Dashboard() {
           </button>
         </div>
 
-        {/* Fertilizer Card */}
         <div className="bg-white rounded-lg shadow-lg p-6 flex flex-col justify-between hover:scale-105 transform transition">
           <h2 className="text-xl font-bold mb-4 text-green-700">Fertilizer Planner</h2>
           <p className="text-gray-700 mb-4">

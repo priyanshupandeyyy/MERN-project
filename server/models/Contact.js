@@ -22,7 +22,7 @@ const contactSchema = new mongoose.Schema({
     },
     createdAt: {
         type: Date,
-        default: Date.now // Automatically stores the time of submission
+        default: Date.now 
     }
 });
 

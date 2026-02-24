@@ -3,7 +3,7 @@ const TransportRequest = require("../models/TransportRequest");
 
 const router = express.Router();
 
-// CREATE TRANSPORT REQUEST
+
 router.post("/request", async (req, res) => {
   try {
     const { userId, cropName, quantity, pickupLocation, destination } = req.body;

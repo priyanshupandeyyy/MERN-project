@@ -24,11 +24,13 @@ export default function FertilizerPlanner() {
     const userId = localStorage.getItem("userId");
 
     try {
-      const res = await axios.post("http://localhost:5000/api/fertilizer/create", {
-        userId,
-        ...form
-      });
-
+      const res = await axios.post(
+  "http://localhost:5000/api/fertilizer/create",
+  {
+    userId,
+    ...form
+  }
+);
       setMessage({ text: res.data.message, type: "success" });
 
       const recommendations = {

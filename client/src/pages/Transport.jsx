@@ -20,10 +20,13 @@ const Transport = () => {
     const userId = localStorage.getItem("userId");
 
     try {
-      const res = await axios.post("http://localhost:5000/api/transport/request", {
-        userId,
-        ...formData
-      });
+      const res = await axios.post(
+  "http://localhost:5000/api/transport/request",
+  {
+    userId,
+    ...formData
+  }
+);
       setMessage({ text: "Request submitted! Finding nearby farmers for pooling...", type: 'success' });
       setFormData({ cropName: '', quantity: '', pickupLocation: '', destination: '' });
     } catch (err) {

@@ -6,7 +6,7 @@ const AboutUs = () => {
   return (
     <div className="min-h-screen bg-white font-sans text-gray-800">
       
-      {/* 1. HERO SECTION */}
+     
       <section className="relative pt-32 pb-20 bg-emerald-900 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 text-center">
           <h1 className="text-4xl lg:text-5xl font-extrabold text-white mb-6">
@@ -17,11 +17,9 @@ const AboutUs = () => {
             AgriPool started with a simple idea: No farmer should have to struggle alone with high transport costs or guess their fertilizer needs. We are building a tech-driven community for the modern agriculturist.
           </p>
         </div>
-        {/* Decorative background circle */}
         <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-emerald-800 rounded-full opacity-50 blur-3xl"></div>
       </section>
 
-      {/* 2. OUR MISSION & VISION */}
       <section className="py-20 max-w-7xl mx-auto px-6 lg:px-12">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
@@ -57,7 +55,6 @@ const AboutUs = () => {
         </div>
       </section>
 
-      {/* 3. CORE VALUES - Simple Grid */}
       <section className="py-20 bg-emerald-50">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="text-center mb-16">
@@ -66,7 +63,6 @@ const AboutUs = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {/* Value 1 */}
             <div className="bg-white p-8 rounded-2xl shadow-sm border border-emerald-100 hover:shadow-md transition-shadow">
               <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center mb-6">
                 <Truck className="text-emerald-700" />
@@ -75,7 +71,6 @@ const AboutUs = () => {
               <p className="text-gray-600">We connect you with nearby farmers to fill trucks to capacity, saving money for everyone involved.</p>
             </div>
 
-            {/* Value 2 */}
             <div className="bg-white p-8 rounded-2xl shadow-sm border border-emerald-100 hover:shadow-md transition-shadow">
               <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center mb-6">
                 <Leaf className="text-emerald-700" />
@@ -84,7 +79,6 @@ const AboutUs = () => {
               <p className="text-gray-600">Our algorithms analyze soil and crop data to provide exact input plans, reducing waste and chemicals.</p>
             </div>
 
-            {/* Value 3 */}
             <div className="bg-white p-8 rounded-2xl shadow-sm border border-emerald-100 hover:shadow-md transition-shadow">
               <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center mb-6">
                 <Users className="text-emerald-700" />
@@ -96,7 +90,6 @@ const AboutUs = () => {
         </div>
       </section>
 
-      {/* 4. FINAL CTA */}
       <section className="py-20 text-center">
         <div className="max-w-4xl mx-auto px-6">
           <h2 className="text-3xl font-bold mb-8 text-emerald-900">Ready to transform your farm?</h2>

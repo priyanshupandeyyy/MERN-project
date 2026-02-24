@@ -2,7 +2,6 @@ const express = require("express");
 const Fertilizer = require("../models/fertilizer");
 const router = express.Router();
 
-// CREATE Fertilizer Plan
 router.post("/create", async (req, res) => {
   try {
     const { userId, landSize, crop, soilType, season } = req.body;
@@ -23,7 +22,6 @@ router.post("/create", async (req, res) => {
   }
 });
 
-// GET ALL Fertilizer Plans
 router.get("/all", async (req, res) => {
   try {
     const plans = await Fertilizer.find().populate("userId", "name phone");

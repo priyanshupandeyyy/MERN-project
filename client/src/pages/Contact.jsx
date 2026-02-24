@@ -20,7 +20,10 @@ const Contact = () => {
     setStatus({ loading: true, message: '', type: '' });
 
     try {
-      const res = await axios.post("http://localhost:5000/api/contact/submit", formData);
+      const res = await axios.post(
+  "http://localhost:5000/api/contact/submit",
+  formData
+);
       if (res.data.success) {
         setStatus({ loading: false, message: "Message sent! We'll get back to you soon.", type: 'success' });
         setFormData({ name: '', email: '', subject: '', message: '' });
@@ -75,13 +78,11 @@ const Contact = () => {
             </div>
           </div>
           
-          {/* Abstract background shapes */}
           <div className="absolute bottom-0 right-0 opacity-10 pointer-events-none">
              <MessageSquare className="w-64 h-64 -mb-10 -mr-10 rotate-12" />
           </div>
         </div>
 
-        {/* RIGHT SIDE: FORM */}
         <div className="md:w-2/3 p-8 md:p-12 bg-white">
           <h3 className="text-2xl font-bold text-gray-800 mb-2">Send us a Message</h3>
           <p className="text-gray-500 mb-8">Fields marked with * are required.</p>

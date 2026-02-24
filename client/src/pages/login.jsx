@@ -18,8 +18,9 @@ export default function Login() {
       const res = await axios.post("http://localhost:5000/api/auth/login", form);
       if (res.data.token) {
         localStorage.setItem("token", res.data.token);
-        
+        localStorage.setItem("role", res.data.user.role);
         localStorage.setItem("userId", res.data.user.id);
+        localStorage.setItem("name",res.data.user.name);
         window.location.href = "/";
       } else {
         setMessage({ text: res.data.error, type: "error" });
@@ -33,7 +34,6 @@ export default function Login() {
 
   return (
     <div className="min-h-screen flex items-stretch bg-white">
-      {/* LEFT SIDE: Visual Content (Hidden on mobile) */}
       <div className="hidden lg:flex w-1/2 bg-emerald-900 relative overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
@@ -69,7 +69,6 @@ export default function Login() {
         </div>
       </div>
 
-      {/* RIGHT SIDE: Login Form */}
       <div className="w-full lg:w-1/2 flex items-center justify-center p-8 md:p-16 bg-gray-50">
         <div className="w-full max-w-md">
           <div className="mb-10 lg:hidden flex justify-center">

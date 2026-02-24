@@ -25,7 +25,7 @@ const transportRequestSchema = new mongoose.Schema(
     },
     status: {
       type: String,
-      default: "pending", // pending | matched | completed
+      default: "pending", 
     },
   },
   { timestamps: true }
