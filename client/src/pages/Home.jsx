@@ -6,20 +6,18 @@ const Home = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
 
-  // Check if user is logged in on component mount
   useEffect(() => {
     const userId = localStorage.getItem("userId");
     const token = localStorage.getItem("token");
-    // If you saved the name in localStorage during login, get it here
-    const userName = localStorage.getItem("userName") || "Farmer"; 
-
+    const userName = localStorage.getItem("userName");
+    const role=localStorage.getItem("role");
     if (userId && token) {
-      setUser({ id: userId, name: userName });
+      setUser({ id: userId, name: userName,role });
     }
   }, []);
 
   const handleLogout = () => {
-    localStorage.clear(); // Clear token, userId, etc.
+    localStorage.clear(); 
     setUser(null);
     navigate("/login");
   };
@@ -27,12 +25,10 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-gray-50 font-sans text-gray-800">
       
-      {/* 1. NAVBAR - Fixed and Glassmorphism effect */}
-      {/* 1. NAVBAR */}
+      
       <nav className="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="flex justify-between items-center h-20">
-            {/* Logo */}
             <div className="flex items-center gap-2 cursor-pointer" onClick={() => navigate("/")}>
               <div className="bg-emerald-600 p-2 rounded-lg">
                 <Leaf className="text-white w-6 h-6" />
@@ -40,7 +36,6 @@ const Home = () => {
               <span className="text-2xl font-bold text-emerald-900 tracking-tight">AgriPool</span>
             </div>
 
-            {/* Desktop Menu */}
             <div className="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-600">
               <Link to="/" className="hover:text-emerald-600 transition-colors">Home</Link>
               <Link to="/transport" className="hover:text-emerald-600 transition-colors">Transport Hub</Link>
@@ -48,14 +43,15 @@ const Home = () => {
               <Link to="/about" className="hover:text-emerald-600 transition-colors">About Us</Link>
             </div>
 
-            {/* Auth Condition: Show User Name or Get Started */}
             <div className="hidden md:flex items-center gap-4">
               {user ? (
                 <div className="flex items-center gap-3 bg-emerald-50 px-4 py-2 rounded-full border border-emerald-100">
                   <div className="bg-emerald-600 p-1.5 rounded-full">
                     <User className="text-white w-4 h-4" />
                   </div>
-                  <span className="font-bold text-emerald-900 text-sm">Hi, {user.name}</span>
+                   <span className="font-semibold text-green-700">
+                     Hi {user.role === "farmer" ? "Farmer" : "Transporter"}
+                  </span>
                   <button 
                     onClick={handleLogout}
                     className="ml-2 p-1 text-gray-400 hover:text-red-500 transition-colors"
@@ -74,9 +70,7 @@ const Home = () => {
         </div>
       </nav>
 
-      {/* 2. HERO SECTION - Immersive Background */}
       <div className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
-        {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <img 
             src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=2070&auto=format&fit=crop" 
@@ -118,11 +112,9 @@ const Home = () => {
         </div>
       </div>
 
-      {/* 3. CORE FEATURES - Floating Cards */}
       <div className="relative z-20 -mt-16 max-w-7xl mx-auto px-6 lg:px-12">
         <div className="grid md:grid-cols-2 gap-6 lg:gap-10">
           
-          {/* Feature 1: Transport */}
           <div className="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100 group">
             <div className="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
               <Truck className="w-7 h-7 text-blue-600" />

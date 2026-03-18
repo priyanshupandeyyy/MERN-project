@@ -12,14 +12,13 @@ export default function App() {
   return (
     <Router>
       <Routes>
-         <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-       
         <Route path="/fertilizer" element={<FertilizerPlanner />} />
         <Route path="/transport" element={<Transport />} />
         <Route path="/contact" element={<Contact />} />
-         <Route path="/about" element={<AboutUs />} />
+        <Route path="/about" element={<AboutUs />} />
       </Routes>
     </Router>
   );

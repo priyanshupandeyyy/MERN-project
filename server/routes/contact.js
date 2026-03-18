@@ -1,14 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const Contact = require('../models/Contact'); // Import the model we made above
+const Contact = require('../models/Contact'); 
 
-// @route   POST api/contact/submit
-// @desc    Submit a contact form
 router.post('/submit', async (req, res) => {
     try {
         const { name, email, subject, message } = req.body;
 
-        // 1. Basic Validation
+       
         if (!name || !email || !message) {
             return res.status(400).json({ 
                 success: false, 
@@ -16,7 +14,7 @@ router.post('/submit', async (req, res) => {
             });
         }
 
-        // 2. Create New Entry
+        
         const newContact = new Contact({
             name,
             email,
@@ -24,7 +22,7 @@ router.post('/submit', async (req, res) => {
             message
         });
 
-        // 3. Save to MongoDB
+        
         await newContact.save();
 
         res.status(201).json({ 

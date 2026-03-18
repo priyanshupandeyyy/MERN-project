@@ -15,13 +15,15 @@ export default function Register() {
     setMessage({ text: "", type: "" });
 
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/register", form);
+        const res = await axios.post(
+  "http://localhost:5000/api/auth/register",
+  form
+);
       setMessage({ 
         text: res.data.message || "Account created! You can now login.", 
         type: "success" 
       });
-      // Optional: Redirect to login after 2 seconds
-      // setTimeout(() => window.location.href = "/login", 2000);
+     
     } catch (err) {
       setMessage({ text: "Registration failed. Try again.", type: "error" });
     } finally {
